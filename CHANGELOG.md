@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.6...v1.1.7) (2022-11-04)
+
+
+### Bug Fixes
+
+* **infrastructure:** Fixing Token Scopes And Names ([#62](https://github.com/Rogibb111/Ski-Resort-Dashboard/issues/62)) ([d0b37d1](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/d0b37d181f83f1ece3226b4467edf49d273ac736)), closes [#58](https://github.com/Rogibb111/Ski-Resort-Dashboard/issues/58)
+
 ## [1.1.6](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.5...v1.1.6) (2022-05-20)
 
 
