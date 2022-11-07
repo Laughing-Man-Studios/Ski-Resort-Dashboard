@@ -6,6 +6,9 @@ name: Scrape
 on:
  - cron: '30 12 * * *'
  - cron: '30 20 * * *'
+ push:
+  branches:
+    - Issue63
 
 jobs:
   scrape:
