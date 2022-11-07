@@ -8,7 +8,7 @@ on:
  - cron: '30 20 * * *'
  push:
   branches:
-    - Issue63
+    - Rogibb111/issue63
 
 jobs:
   scrape:
