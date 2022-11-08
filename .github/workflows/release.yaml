@@ -1,4 +1,5 @@
-# GitHub Action For using Semantic Release
+# GitHub Action workflow for using Semantic Release
+# and deploying to Fly.io for production
 
 name: Release
 

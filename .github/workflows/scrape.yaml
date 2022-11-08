@@ -1,0 +1,19 @@
+# Github Action workflow to kick off scraping
+# of websites to collect ski resort data
+
+name: Scrape
+
+on:
+  schedule:
+    - cron: '30 12 * * *'
+    - cron: '30 20 * * *'
+
+jobs:
+  scrape:
+    name: Scrape Resort Data
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      uses: wei/curl@master
+      with:
+        args: https://ski-resort-dashboard.fly.dev/scrape
