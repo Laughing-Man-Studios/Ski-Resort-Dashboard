@@ -7,9 +7,9 @@ on:
   schedule:
     - cron: '30 12 * * *'
     - cron: '30 20 * * *'
- push:
-  branches:
-    - Rogibb111/issue63
+  push:
+    branches:
+      - Rogibb111/issue63
 
 jobs:
   scrape:
