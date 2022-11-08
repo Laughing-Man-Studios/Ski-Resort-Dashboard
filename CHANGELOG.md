@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.7...v1.1.8) (2022-11-08)
+
+
+### Bug Fixes
+
+* **infrastructure:** Getting scraping to work with Fly.io ([#64](https://github.com/Rogibb111/Ski-Resort-Dashboard/issues/64)) ([8c6f653](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/8c6f6532a547dc0f53ac5d5846aad43acfb4799b))
+
 ## [1.1.7](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.6...v1.1.7) (2022-11-04)
 
 
