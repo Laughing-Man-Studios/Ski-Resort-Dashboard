@@ -1,0 +1,9 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: sbt run
+
+ports:
+  - port: 9000
+    onOpen: open-preview
