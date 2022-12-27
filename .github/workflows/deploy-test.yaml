@@ -10,7 +10,6 @@ jobs:
   deploy:
     name: Deploy App To Oracle Cloud - Test
     runs-on: ubuntu-latest
-    needs: release
     environment: 
       name: Production
       url: https://app.ski-resort-dashboard.laughingmanstudios.us.to
