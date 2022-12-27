@@ -1,10 +1,10 @@
-name: 'test-deploy'
+name: 'deploy-test'
 
 # yamllint disable-line rule:truthy
 on:
   push:
     branches:
-      - issue69
+      - Rogibb111/issue69
 
 jobs:
   deploy:
