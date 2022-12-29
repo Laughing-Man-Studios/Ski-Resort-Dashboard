@@ -1,3 +1,10 @@
+## [1.1.9](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.8...v1.1.9) (2022-11-18)
+
+
+### Bug Fixes
+
+* **infrastructure:**  Setting Up Project For Gitpod ([df8ec9f](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/df8ec9fa74886dbf68e33b179f23f92ad1a27cbb))
+
 ## [1.1.8](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.7...v1.1.8) (2022-11-08)
 
 
