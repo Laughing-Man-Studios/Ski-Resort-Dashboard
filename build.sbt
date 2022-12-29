@@ -1,4 +1,4 @@
-name := """ski-resort-dashboard-backend"""
+name := """ski-resort-dashboard"""
 organization := "com.example"
 
 version := "1.0-SNAPSHOT"
@@ -20,3 +20,7 @@ libraryDependencies += "com.typesafe.play" %% "play-slick" % "5.0.0"
 
 // Adds additional packages into conf/routes
 play.sbt.routes.RoutesKeys.routesImport += "util.Binders._"
+
+// Remove Documenation From Production Build
+Compile / doc / sources := Seq.empty
+Compile / packageDoc / publishArtifact := false

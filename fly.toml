@@ -5,10 +5,7 @@ kill_signal = "SIGINT"
 kill_timeout = 5
 
 [env]
-  PORT = "8080"
-
-[build]
-  builder = "heroku/buildpacks:latest"
+  PORT = "9000"
 
 [experimental]
   allowed_public_ports = []
@@ -17,12 +14,9 @@ kill_timeout = 5
   entrypoint = []
   exec = []
 
-[processes]
-  app = "target/universal/stage/bin/ski-resort-dashboard-backend -Dhttp.port=$PORT"
-
 [[services]]
   http_checks = []
-  internal_port = 8080
+  internal_port = 9000
   processes = ["app"]
   protocol = "tcp"
   script_checks = []
