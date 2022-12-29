@@ -1,4 +1,5 @@
 FROM sbtscala/scala-sbt:openjdk-8u342_1.8.0_3.2.1 as builder
+ENV JAVA_OPTS='-Xmx1024M -Xms100M -XX:+HeapDumpOnOutOfMemoryError -XX:+UseG1GC'
 WORKDIR /app
 COPY . .
 RUN sbt universal:packageZipTarball &&\
