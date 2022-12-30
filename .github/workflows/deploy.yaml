@@ -1,10 +1,10 @@
-name: 'deploy-test'
+name: 'deploy'
 
 # yamllint disable-line rule:truthy
 on:
   push:
-    branches:
-      - Rogibb111/issue69
+    tags:
+      - 'v*'
 
 jobs:
   docker:
@@ -43,3 +43,23 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+  deploy:
+    name: Deploy App To Oracle Cloud
+    runs-on: ubuntu-latest
+    needs: docker
+    environment: 
+      name: Production
+      url: https://app.ski-resort-dashboard.laughingmanstudios.us.to
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.CHECKOUT_TOKEN }}
+      - name: Deploy to Dokku
+        uses: dokku/github-action@master
+        with: 
+          branch: main
+          git_remote_url: 'ssh://deploy.ski-resort-dashboard.laughingmanstudios.us.to:22/ski-resort-dashboard'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          deploy_docker_image: ${{ github.repository }}:latest 
