@@ -1,3 +1,10 @@
+## [1.1.10](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.9...v1.1.10) (2022-12-27)
+
+
+### Bug Fixes
+
+* **infrastructure:**  Migrating to Oracle Cloud ([f8565c9](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/f8565c9c48f9a59a25583f170cf1ee5b3dffa082))
+
 ## [1.1.9](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.8...v1.1.9) (2022-11-18)
 
 
