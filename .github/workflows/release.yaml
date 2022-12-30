@@ -51,10 +51,5 @@ jobs:
           echo ${{ steps.semantic-release.outputs.new_release_major_version }}
           echo ${{ steps.semantic-release.outputs.new_release_minor_version }}
           echo ${{ steps.semantic-release.outputs.new_release_patch_version }}
-      - name: Deploy to Dokku
-        uses: dokku/github-action@master
-        with: 
-          git_remote_url: 'ssh://deploy.ski-resort-dashboard.laughingmanstudios.us.to:22/ski-resort-dashboard'
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
 
   
