@@ -1,3 +1,10 @@
+## [1.1.15](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.14...v1.1.15) (2023-01-17)
+
+
+### Bug Fixes
+
+* **infrastructure:** Fixing Docker Deploy URL Again ([19e2e80](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/19e2e80f8f85157fce30efab3cacac18f6a19f2a))
+
 ## [1.1.14](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.13...v1.1.14) (2023-01-17)
 
 
