@@ -7,6 +7,10 @@ on:
     types: [completed]
     branches: [main]
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   docker:
     name: Build Docker Image and Push to Github Packages
@@ -18,9 +22,6 @@ jobs:
     environment:
       name: Production
       url: https://github.com/Rogibb111?tab=packages&repo_name=Ski-Resort-Dashboard
-    env:
-      REGISTRY: ghcr.io
-      IMAGE_NAME: ${{ github.repository }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -58,10 +59,16 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.CHECKOUT_TOKEN }}
+      - id: Casechange
+        uses: ASzc/change-string-case-action@v5
+        with:
+          string: ${{ env.IMAGE_NAME }}
       - name: Deploy to Dokku
         uses: dokku/github-action@master
+        env: 
+          LC_REPO: ${{ steps.Casechange.outputs.lowercase }}
         with: 
           branch: main
           git_remote_url: 'ssh://dokku@deploy.ski-resort-dashboard.laughingmanstudios.us.to:22/ski-resort-dashboard'
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          deploy_docker_image: ${{ github.repository }}:latest 
+          deploy_docker_image: ${{ env.REGISTRY }}/${{ env.LC_REPO }}:latest 
