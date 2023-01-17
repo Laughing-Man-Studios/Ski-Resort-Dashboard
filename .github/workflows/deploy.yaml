@@ -2,14 +2,16 @@ name: 'deploy'
 
 # yamllint disable-line rule:truthy
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_run:
+    workflows: [Release]
+    types: [completed]
+    branches: [main]
 
 jobs:
   docker:
     name: Build Docker Image and Push to Github Packages
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     permissions:
       contents: read
       packages: write
