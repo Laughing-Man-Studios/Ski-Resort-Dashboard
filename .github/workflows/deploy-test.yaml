@@ -22,5 +22,5 @@ jobs:
           token: ${{ secrets.CHECKOUT_TOKEN }}
       - name: Echo Github Repository
         env:
-            GITHUB_REPOSITORY: ${{ github.respository }}:latest
-        run: echo "$GITHUB_REPOSITORY"
+            GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
