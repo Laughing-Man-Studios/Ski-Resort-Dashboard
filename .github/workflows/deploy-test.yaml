@@ -53,5 +53,4 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.CHECKOUT_TOKEN }}
       - name: Echo Github Repository
-        env:
         run: echo ${{ needs.docker.outputs.tag }}
