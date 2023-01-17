@@ -1,3 +1,10 @@
+## [1.1.13](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.12...v1.1.13) (2023-01-17)
+
+
+### Bug Fixes
+
+* **infrastructure:** Updating SSH URL ([7eda63c](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/7eda63c8da1832727d8140b833d2826467f473e9))
+
 ## [1.1.12](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.11...v1.1.12) (2023-01-17)
 
 
