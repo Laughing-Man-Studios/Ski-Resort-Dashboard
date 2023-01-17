@@ -7,6 +7,10 @@ on:
     branches:
       - Rogibb111/issue69
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   deploy:
     name: Deploy App To Oracle Cloud - Test
@@ -20,7 +24,12 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.CHECKOUT_TOKEN }}
+      - id: string
+        uses: ASzc/change-string-case-action@v5
+        with:
+          string: ${{ env.IMAGE_NAME }}
       - name: Echo Github Repository
         env:
-            GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+            LC_REPO: ${{ steps.string.output.lowercase }}
+            GITHUB_PACKAGE: ${{ env.REGISTRY }}/${{ env.LC_REPO}}:latest
+        run: echo "$GITHUB_PACKAGE"
