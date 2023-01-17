@@ -22,6 +22,8 @@ jobs:
     environment:
       name: Production
       url: https://github.com/Rogibb111?tab=packages&repo_name=Ski-Resort-Dashboard
+    outputs:
+      tags: ${{ steps.meta.outputs.tags }}      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
