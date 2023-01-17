@@ -1,4 +1,4 @@
-name: 'deploy'
+name: 'Deploy'
 
 # yamllint disable-line rule:truthy
 on:
@@ -62,6 +62,6 @@ jobs:
         uses: dokku/github-action@master
         with: 
           branch: main
-          git_remote_url: 'ssh://deploy.ski-resort-dashboard.laughingmanstudios.us.to:22/ski-resort-dashboard'
+          git_remote_url: 'ssh://dokku@deploy.ski-resort-dashboard.laughingmanstudios.us.to:22/ski-resort-dashboard'
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           deploy_docker_image: ${{ github.repository }}:latest 
