@@ -1,3 +1,10 @@
+## [1.1.12](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.11...v1.1.12) (2023-01-17)
+
+
+### Bug Fixes
+
+* **infrastructure:** Updating Deploy Workflow Trigger ([7e5aa07](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/7e5aa077eb30cf53af10ad005da4ba7c181ae5f5))
+
 ## [1.1.11](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.10...v1.1.11) (2023-01-17)
 
 
