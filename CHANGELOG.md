@@ -1,3 +1,10 @@
+## [1.1.19](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.18...v1.1.19) (2023-01-17)
+
+
+### Bug Fixes
+
+* **infrastructure:** Removing Workflow Run Check ([1188116](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/118811621a998b9b7df04a7f376cf234c50672af))
+
 ## [1.1.18](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.17...v1.1.18) (2023-01-17)
 
 
