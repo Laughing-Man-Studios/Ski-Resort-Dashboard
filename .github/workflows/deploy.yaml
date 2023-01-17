@@ -1,10 +1,9 @@
 name: 'Deploy'
 
 # yamllint disable-line rule:truthy
-on:  
-  push:
-    tags:
-      - '*'
+on:
+  release:
+    types: [published]
 
 env:
   REGISTRY: ghcr.io
