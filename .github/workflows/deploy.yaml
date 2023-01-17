@@ -25,8 +25,7 @@ jobs:
       REGISTRY: ghcr.io
       IMAGE_NAME: ${{ github.repository }}
     outputs:
-      tags: ${{ steps.meta.outputs.tags }}
-      digest: ${{ steps.push.outputs.digest }}   
+      tags: ${{ steps.meta.outputs.tags }}  
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
