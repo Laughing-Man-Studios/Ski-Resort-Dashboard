@@ -1,11 +1,10 @@
 name: 'Deploy'
 
 # yamllint disable-line rule:truthy
-on:
-  workflow_run:
-    workflows: [Release]
-    types: [completed]
-    branches: [main]
+on:  
+  push:
+    tags:
+      - '*'
 
 env:
   REGISTRY: ghcr.io
@@ -26,7 +25,8 @@ jobs:
       REGISTRY: ghcr.io
       IMAGE_NAME: ${{ github.repository }}
     outputs:
-      tags: ${{ steps.meta.outputs.tags }}      
+      tags: ${{ steps.meta.outputs.tags }}
+      digest: ${{ steps.push.outputs.digest }}   
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -46,6 +46,7 @@ jobs:
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        id: push
         with:
           context: .
           push: true
