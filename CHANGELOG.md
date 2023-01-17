@@ -1,3 +1,10 @@
+## [1.1.16](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.15...v1.1.16) (2023-01-17)
+
+
+### Bug Fixes
+
+* **infrastructure:** Fixing Allowed Domains ([b4ea367](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/b4ea3670d98f4312c7c2b132e4e7b1cb7b3644a5))
+
 ## [1.1.15](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.14...v1.1.15) (2023-01-17)
 
 
