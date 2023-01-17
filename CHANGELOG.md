@@ -1,3 +1,10 @@
+## [1.1.17](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.16...v1.1.17) (2023-01-17)
+
+
+### Bug Fixes
+
+* **infrastructure:** Moving Back To Tag Triggered Deploys ([484e54d](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/484e54da05708e35f4d0509302a992c227dd0584))
+
 ## [1.1.16](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.15...v1.1.16) (2023-01-17)
 
 
