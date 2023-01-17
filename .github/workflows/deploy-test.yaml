@@ -27,8 +27,9 @@ jobs:
       - id: string
         uses: ASzc/change-string-case-action@v5
         with:
-          string: ${{ env.IMAGE_NAME }}
+          string: XyZzY
       - name: Echo Github Repository
         env:
-            GITHUB_PACKAGE: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            LC_REPO: ${{ steps.string.output.lowercase }}
+            GITHUB_PACKAGE: ${{ env.REGISTRY }}/${{ env.LC_REPO}}:latest
         run: echo "$GITHUB_PACKAGE"
