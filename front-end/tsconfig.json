@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
       "target": "es6",
-      "module": "commonjs",
+      "module": "ESNext",
+      "moduleResolution": "node",
       "rootDir": "./typescript/",
       "outDir": "../public/javascripts/",
       "esModuleInterop": true,
       "strict": true,
       "sourceMap": true,
-      "resolveJsonModule": true,
-      "typeRoots": ["./@types", "node_modules/@types"]
+      "typeRoots": ["./@types", "node_modules/@types"],
+      "experimentalDecorators": true
     }
   }
