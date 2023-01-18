@@ -16,10 +16,11 @@
 
     </head>
     <body>
+        <side-bar></side-bar>
         @* And here's where we render the `Html` object containing
          * the page content. *@
         @content
 
-      <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
+      <script src="@routes.Assets.versioned("javascripts/sidebar.js")" type="module"></script>
     </body>
 </html>
