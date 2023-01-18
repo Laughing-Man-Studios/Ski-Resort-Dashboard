@@ -1,5 +1,5 @@
 FROM sbtscala/scala-sbt:openjdk-8u342_1.8.0_3.2.1 as builder
-RUN apt update && apt-get -y install npm
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash apt-get install -y nodejs
 WORKDIR /app
 COPY . .
 WORKDIR /app/front-end
