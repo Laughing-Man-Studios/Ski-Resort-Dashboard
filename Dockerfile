@@ -1,7 +1,10 @@
 FROM sbtscala/scala-sbt:openjdk-8u342_1.8.0_3.2.1 as builder
-ENV JAVA_OPTS='-Xmx1024M -Xms100M -XX:+HeapDumpOnOutOfMemoryError -XX:+UseG1GC'
+RUN apk add --update npm
 WORKDIR /app
 COPY . .
+WORKDIR /app/front-end
+RUN npm install && npm run build
+WORKDIR /app
 RUN sbt universal:packageZipTarball &&\
     echo ski-resort-dashboard-$(sbt --error 'print version') > version.txt &&\ 
 	echo "#!/bin/bash\n$(cat version.txt)/bin/ski-resort-dashboard" > run.sh
