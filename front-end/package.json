@@ -1,0 +1,28 @@
+{
+  "name": "ski-resort-dashboard",
+  "version": "1.0.0",
+  "description": "TypeScript Files For The Ski Resort Dashboard Project",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && sass scss:../public/stylesheets",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rogibb111/Ski-Resort-Dashboard.git"
+  },
+  "keywords": [
+    "Skiing",
+    "Scala",
+    "Front-End"
+  ],
+  "author": "Robert Gibb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rogibb111/Ski-Resort-Dashboard/issues"
+  },
+  "homepage": "https://github.com/Rogibb111/Ski-Resort-Dashboard#readme",
+  "dependencies": {
+    "typescript": "^4.9.4"
+  }
+}

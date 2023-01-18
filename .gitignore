@@ -6,3 +6,6 @@
 target
 metals.sbt
 .bsp
+node_modules
+javascripts/
+stylesheets/
