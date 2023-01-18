@@ -2,7 +2,7 @@
 The ski resort dashboard is a a small web app designed to display aggregated data about some of the local ski resorts that I like to frequent in Colorado. The idea is similar to what OnTheSnow does, but with a slightly more focused goal on displaying the historical weather data of each resort. The reason for this is to try and get a slighly better picture of what conditions will be like on the mountain.
 
 ## Links 
-- [Production Site](app.ski-resort-dashboard.laughing-man-studios.us.to)
+- [Production Site](http://ski-resort-dashboard.laughing-man-studios.us.to)
 - [Wiki](https://github.com/Rogibb111/Ski-Resort-Dashboard/wiki)
 - [Kanban Board](https://github.com/users/Rogibb111/projects/2/views/1)
 
