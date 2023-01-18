@@ -1,5 +1,5 @@
 FROM sbtscala/scala-sbt:openjdk-8u342_1.8.0_3.2.1 as builder
-RUN apt update && apt install npm
+RUN apt update && apt-get -y install npm
 WORKDIR /app
 COPY . .
 WORKDIR /app/front-end
