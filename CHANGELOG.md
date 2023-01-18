@@ -1,3 +1,10 @@
+## [1.1.20](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.19...v1.1.20) (2023-01-18)
+
+
+### Bug Fixes
+
+* **infrastructure:** Updating Scrape URL ([acc3ebe](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/acc3ebe7f0617b8cbee8724f66c377645a3220bc))
+
 ## [1.1.19](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.18...v1.1.19) (2023-01-17)
 
 
