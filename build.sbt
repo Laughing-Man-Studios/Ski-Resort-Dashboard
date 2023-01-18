@@ -21,9 +21,6 @@ libraryDependencies += "com.typesafe.play" %% "play-slick" % "5.0.0"
 // Adds additional packages into conf/routes
 play.sbt.routes.RoutesKeys.routesImport += "util.Binders._"
 
-// Adding play hook for front-end build
-PlayKeys.playRunHooks += FrontEndBuild(baseDirectory.value / "front-end") 
-
 // Remove Documenation From Production Build
 Compile / doc / sources := Seq.empty
 Compile / packageDoc / publishArtifact := false
