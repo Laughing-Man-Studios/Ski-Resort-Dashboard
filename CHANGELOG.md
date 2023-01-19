@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.3.1...v1.3.2) (2023-01-19)
+
+
+### Bug Fixes
+
+* **scraper:** Fixing Powdr Resorts Scraping ([dee2369](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/dee2369ae90f52f06637771830b915127626d1af)), closes [#93](https://github.com/Rogibb111/Ski-Resort-Dashboard/issues/93)
+
 ## [1.3.1](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.3.0...v1.3.1) (2023-01-19)
 
 
