@@ -1,6 +1,6 @@
 @(snapshotArray: Array[ResortSnapshot])
 
-@main("Ski Resort Dashboard") {
+@main("Ski Resort Dashboard","stylesheets/home.css") {
   <h1>Ski Resort Dashboard</h1>
   <p>
     This is a small and simple dashboard to look up current and past conditions at a couple of Colorado Ski Resorts. Currently you can look at the 
@@ -10,14 +10,14 @@
   </p>
 
   @for(resortSnapshot <- snapshotArray) {
-    <div>
+    <div class="resort-card">
       <h3>@resortSnapshot.resort.toString()</h3>
-      <img src="@routes.Assets.versioned("images/"+ resortSnapshot.resort.toString() +".png")"/>
-      <p>24 Hour Snowfall: @resortSnapshot.resortData.dailySnow inches</p> 
-      <p>Current Snow Depth: @resortSnapshot.resortData.baseDepth inches</p>
-      <p>Current Temperature: @resortSnapshot.resortData.temperature farenheit</p>
-      <p>Current Wind Speed: @resortSnapshot.resortData.windSpeed mph</p>
-      <p>Current Wind Direction: @resortSnapshot.resortData.windDir.toString()</p>
-    <div>
+      <img src="@routes.Assets.at("images/"+ resortSnapshot.resort.toString() +".png")" title="@resortSnapshot.resort.toString()"/>
+      <p class="snow-day">24 Hour Snowfall: @resortSnapshot.resortData.dailySnow inches</p> 
+      <p class="snow-total">Current Snow Depth: @resortSnapshot.resortData.baseDepth inches</p>
+      <p class="temp">Current Temperature: @resortSnapshot.resortData.temperature farenheit</p>
+      <p class="wind-speed">Current Wind Speed: @resortSnapshot.resortData.windSpeed mph</p>
+      <p class="wind-dir">Current Wind Direction: @resortSnapshot.resortData.windDir.toString()</p>
+    </div>
   }
 }
