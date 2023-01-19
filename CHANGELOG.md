@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.20...v1.2.0) (2023-01-19)
+
+
+### Features
+
+* **display:** Setting Up Front End Build ([5efe4ac](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/5efe4ac7310dcff6d77e7b309327356daed63a1b))
+
 ## [1.1.20](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.19...v1.1.20) (2023-01-18)
 
 
