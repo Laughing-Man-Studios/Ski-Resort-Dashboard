@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.2.0...v1.2.1) (2023-01-19)
+
+
+### Bug Fixes
+
+* **display:** Updating Home Page HTML ([07b30ac](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/07b30acfdfa6d8fc882e4c5ffd233bd2e8c9b458)), closes [#86](https://github.com/Rogibb111/Ski-Resort-Dashboard/issues/86)
+
 # [1.2.0](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.1.20...v1.2.0) (2023-01-19)
 
 
