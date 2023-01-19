@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.3.0...v1.3.1) (2023-01-19)
+
+
+### Bug Fixes
+
+* **display:** Updating Home Page Styles ([785597e](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/785597e074f8739cedbce359b9c57b8e9020876f)), closes [#90](https://github.com/Rogibb111/Ski-Resort-Dashboard/issues/90)
+
 # [1.3.0](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.2.1...v1.3.0) (2023-01-19)
 
 
