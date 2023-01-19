@@ -109,14 +109,14 @@ case object Keystone extends Resorts {
 case object Eldora extends PowdrResorts {
     override def toString: String = "Eldora-Mountain-Resort"
     override val databaseName: String = "ELDORA"
-    override val scrapeUrl: String = "https://www.eldora.com/api/v1/dor/conditions"
+    override val scrapeUrl: String = "https://api.eldora.com/api/v1/dor/conditions"
     override val location_id: Int = 11
 }
 
 case object Copper extends PowdrResorts {
     override def toString: String = "Copper-Mountain"
     override val databaseName: String = "COPPER"
-    override val scrapeUrl: String = "https://www.coppercolorado.com/api/v1/dor/conditions"
+    override val scrapeUrl: String = "https://api.coppercolorado.com/api/v1/dor/conditions"
     override val location_id: Int = 7
 }
 
