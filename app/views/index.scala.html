@@ -9,16 +9,15 @@
     data that I have collected so far using the graphs on each resort page. Enjoy!
   </p>
 
-  <ul>
-    @for(resortSnapshot <- snapshotArray) {
-      <li>@resortSnapshot.resort.toString() 
-        24 Hour Snowfall: @resortSnapshot.resortData.dailySnow inches 
-        Current Snow Depth: @resortSnapshot.resortData.baseDepth inches
-        Current Temperature: @resortSnapshot.resortData.temperature farenheit
-        Current Wind Speed: @resortSnapshot.resortData.windSpeed mph
-        Current Wind Direction: @resortSnapshot.resortData.windDir.toString()
-      </li>
-    }
-  </ul>
-  
+  @for(resortSnapshot <- snapshotArray) {
+    <div>
+      <h3>@resortSnapshot.resort.toString()</h3>
+      <img src="@routes.Assets.versioned("images/"+ resortSnapshot.resort.toString() +".png")"/>
+      <p>24 Hour Snowfall: @resortSnapshot.resortData.dailySnow inches</p> 
+      <p>Current Snow Depth: @resortSnapshot.resortData.baseDepth inches</p>
+      <p>Current Temperature: @resortSnapshot.resortData.temperature farenheit</p>
+      <p>Current Wind Speed: @resortSnapshot.resortData.windSpeed mph</p>
+      <p>Current Wind Direction: @resortSnapshot.resortData.windDir.toString()</p>
+    <div>
+  }
 }
