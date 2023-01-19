@@ -1,6 +1,6 @@
 import {LitElement, css, html} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 
-export class SimpleGreeting extends LitElement {
+export class Navbar extends LitElement {
   static properties = {
     name: {},
   };
@@ -22,4 +22,4 @@ export class SimpleGreeting extends LitElement {
     return html`<p>Hello, ${this.name}!</p>`;
   }
 }
-customElements.define('simple-greeting', SimpleGreeting);
+customElements.define('nav-bar', Navbar);
