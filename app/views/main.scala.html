@@ -16,10 +16,11 @@
 
     </head>
     <body>
+        <nav-bar></nav-bar>
         @* And here's where we render the `Html` object containing
          * the page content. *@
         @content
 
-      <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
+      <script src="@routes.Assets.versioned("javascripts/Navbar.js")" type="module"></script>
     </body>
 </html>
