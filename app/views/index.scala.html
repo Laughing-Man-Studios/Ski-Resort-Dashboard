@@ -11,7 +11,8 @@
 
   @for(resortSnapshot <- snapshotArray) {
     <div>
-      <h3>@resortSnapshot.resort.toString()</h3> 
+      <h3>@resortSnapshot.resort.toString()</h3>
+      <img src="@routes.Assets.versioned("images/"+ resortSnapshot.resort.toString() +".png")"/>
       <p>24 Hour Snowfall: @resortSnapshot.resortData.dailySnow inches</p> 
       <p>Current Snow Depth: @resortSnapshot.resortData.baseDepth inches</p>
       <p>Current Temperature: @resortSnapshot.resortData.temperature farenheit</p>
