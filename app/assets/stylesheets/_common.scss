@@ -1,0 +1,14 @@
+$breakpoints: ("mobile": 480px, "tablet": 768px, "desktop": 1024px);
+
+@mixin screen($breakpoint) {
+    $min-width: map-get($breakpoints, $breakpoint);
+    @media only screen and (min-width: $min-width) {
+        @content;
+    }
+}
+
+$blue: #4388cc;
+$white: white;
+$black: black;
+$green: #749c75;
+$red: #B98B82;
