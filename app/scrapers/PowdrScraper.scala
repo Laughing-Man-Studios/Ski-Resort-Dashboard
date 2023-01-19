@@ -19,15 +19,17 @@ class PowdrScraper (ws: WSClient, resort: PowdrResorts)(
 
     private val request = ws.url(resort.scrapeUrl)
     private val snowReportResult: SnowResult = Await.result(request.get().map { response =>
-        (response.json \ "snowReport1234").validate[Set[SnowResult]]
+        (response.json \ "snowReport").validate[Set[SnowResult]]
     }, 5.seconds).getOrElse(Set(defaultResult))
         .find(report => report.location_id == resort.location_id).getOrElse(defaultResult)
 
     override protected def scrape24HrSnowFall(): Int = {
+        print(snowReportResult.items)
         snowReportResult.items.find(item => item.duration == "24 Hours").getOrElse(SnowAmount(0,"")).amount
     }
     
     override protected def scrapeBaseDepth(): Int = {
+        print(snowReportResult.items)
         snowReportResult.items.find(item => item.duration == "base-depth").getOrElse(SnowAmount(0,"")).amount
     }
     
