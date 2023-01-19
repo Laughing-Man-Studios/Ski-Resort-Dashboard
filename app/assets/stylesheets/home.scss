@@ -1,0 +1,47 @@
+@import "./common";
+
+body {
+    background-color: $white;
+    font-family: Arial, Helvetica, sans-serif;
+
+    #container {
+        margin: 3rem;
+        padding: 1rem 3rem;
+        background-color: $gray;
+
+        h1 {
+            text-align: center;
+            color: $red;
+            font-size: 3rem;
+        }
+    
+        #description {
+            text-align: center;
+            font-size: smaller ;
+        }
+    
+        .resort-card {
+            border: 1rem solid $green;
+            background-color: $blue;
+            color: $white;
+            padding: 2rem 5rem;
+            margin: 2rem 0;
+    
+            h3 {
+                text-align: center;
+            }
+    
+            .primary {
+                margin: auto;
+            }
+            
+            .secondary {
+                display: none;
+            }
+    
+            .tertiary {
+                display: none;
+            }
+        }
+    }
+}
