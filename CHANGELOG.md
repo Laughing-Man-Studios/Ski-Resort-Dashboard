@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.2.1...v1.3.0) (2023-01-19)
+
+
+### Features
+
+* **display:** Adding SCSS To Build ([5dc3601](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/5dc3601b8a2f43b1bf326ddfddb780f10790cb76)), closes [#88](https://github.com/Rogibb111/Ski-Resort-Dashboard/issues/88)
+
 ## [1.2.1](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.2.0...v1.2.1) (2023-01-19)
 
 
