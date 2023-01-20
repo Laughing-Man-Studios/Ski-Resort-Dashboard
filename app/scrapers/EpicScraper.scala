@@ -1,35 +1,32 @@
 package scrapers
 
-import javax.inject.Inject
-import play.api.libs.ws._
-import scala.concurrent.{ ExecutionContext, Future, Await }
-import scala.util.{ Success, Failure }
-import play.api.libs.json._
-import scala.concurrent.duration._
-import models.Resorts
+import net.ruippeixotog.scalascraper.browser.JsoupBrowser
+import net.ruippeixotog.scalascraper.dsl.DSL._
+import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
+import net.ruippeixotog.scalascraper.dsl.DSL.Parse._
+import net.ruippeixotog.scalascraper.model.Element
 
+import models._
 
-class EpicScraper (ws: WSClient, resort: Resorts)(
-    implicit ec: ExecutionContext
-) extends BaseScraper(resort)  {
-    case class SnowMeasurement (Inches: String, Centimeters: String)
-    case class SnowResult (Depth: SnowMeasurement, Description: String)
-    private val default = SnowResult(SnowMeasurement("0", ""), "")
+class EpicScraper(resort: Resorts) extends BaseScraper(resort)  {
 
-    implicit val SnowMeasurementReads = Json.reads[SnowMeasurement]
-    implicit val SnowResultReads = Json.reads[SnowResult]
-
-    private val request = ws.url(resort.scrapeUrl)
-    private val snowReportResult: Set[SnowResult] = Await.result(request.get().map { response =>
-        (response.json \ "SnowReportSections").validate[Set[SnowResult]]
-    }, 5.second).getOrElse(Set(default))
+    val descriptionClass = ".snow_report__metrics__description"
+    val meaurementClass = ".snow_report__metrics__measurement"
+    val scripts = browser.get(resort.scrapeUrl) >> elementList("script")
+    val snowReportScript = scripts.filter(el => el.innerHtml contains "TwentyFourHourSnowfall") match {
+        case script if script.isEmpty => ""
+        case script => script(0).innerHtml
+    }
 
     protected def scrape24HrSnowFall(): Int = {
-        return snowReportResult.find(reportItem => reportItem.Description.contains("24 Hour")).getOrElse(default).Depth.Inches.toInt;
+        val extract24HrSnowFall = raw"\"TwentyFourHourSnowfall\":\{\"Inches\":\"(.*?)\"".r
+        val snowFall = for (m <- extract24HrSnowFall.findFirstMatchIn(snowReportScript)) yield m.group(1)
+        snowFall.getOrElse("").toIntOption.getOrElse(0)
     }
     
     protected def scrapeBaseDepth(): Int = {
-        return snowReportResult.find(reportItem => reportItem.Description.contains("Base")).getOrElse(default).Depth.Inches.toInt;
+        val extractBaseDepth = raw"\"BaseDepth\":\{\"Inches\":\"(.*?)\"".r
+        val baseDepth = for (m <- extractBaseDepth.findFirstMatchIn(snowReportScript)) yield m.group(1)
+        baseDepth.getOrElse("").toIntOption.getOrElse(0)
     }
-  
 }
