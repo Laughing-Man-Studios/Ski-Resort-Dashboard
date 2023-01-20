@@ -24,12 +24,10 @@ class PowdrScraper (ws: WSClient, resort: PowdrResorts)(
         .find(report => report.location_id == resort.location_id).getOrElse(defaultResult)
 
     override protected def scrape24HrSnowFall(): Int = {
-        print(snowReportResult.items)
         snowReportResult.items.find(item => item.duration == "24 Hours").getOrElse(SnowAmount(0,"")).amount
     }
     
     override protected def scrapeBaseDepth(): Int = {
-        print(snowReportResult.items)
         snowReportResult.items.find(item => item.duration == "base-depth").getOrElse(SnowAmount(0,"")).amount
     }
     

@@ -86,24 +86,24 @@ case object ArapahoeBasin extends Resorts {
 case object Breckenridge extends Resorts {
     override def toString: String = "Breckenridge"
     override val databaseName: String = "BRECKENRIDGE"
-    override val scrapeUrl: String = "https://www.breckenridge.com/api/PageApi/GetWeatherDataForHeader"
+    override val scrapeUrl: String = "https://www.breckenridge.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx"
 }
 case object BeaverCreek extends Resorts {
     override def toString: String = "Beaver-Creek"
     override val databaseName: String = "BEAVERCREEK"
-    override val scrapeUrl: String = "https://www.beavercreek.com/api/PageApi/GetWeatherDataForHeader"
+    override val scrapeUrl: String = "https://www.beavercreek.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx"
 }
 
 case object Vail extends Resorts {
     override def toString: String = "Vail"
     override val databaseName: String = "VAIL"
-    override val scrapeUrl: String = "https://www.vail.com/api/PageApi/GetWeatherDataForHeader"
+    override val scrapeUrl: String = "https://www.vail.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx"
 }
 
 case object Keystone extends Resorts {
     override def toString: String = "Keystone-Resort"
     override val databaseName: String = "KEYSTONE"
-    override val scrapeUrl: String = "https://www.keystoneresort.com/api/PageApi/GetWeatherDataForHeader"   
+    override val scrapeUrl: String = "https://www.keystoneresort.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx"   
 }
 
 case object Eldora extends PowdrResorts {
