@@ -5,7 +5,7 @@ RUN sbt universal:packageZipTarball &&\
     echo ski-resort-dashboard-$(sbt --error 'print version') > version.txt &&\ 
 	echo "#!/bin/bash\n$(cat version.txt)/bin/ski-resort-dashboard" > run.sh
 
-FROM eclipse-temurin:8-jre-alpine
+FROM eclipse-temurin:11-jre-alpine
 RUN apk add --no-cache bash
 WORKDIR /app
 COPY --from=builder /app/target/universal/*.tgz \
