@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.3.3...v1.3.4) (2023-01-21)
+
+
+### Bug Fixes
+
+* **infrastructure:** Fixing Epic Scrapers in Prod ([b04a184](https://github.com/Rogibb111/Ski-Resort-Dashboard/commit/b04a184a897a6c75bf7d5b45b20c53430976f8b0)), closes [#97](https://github.com/Rogibb111/Ski-Resort-Dashboard/issues/97)
+
 ## [1.3.3](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.3.2...v1.3.3) (2023-01-20)
 
 
