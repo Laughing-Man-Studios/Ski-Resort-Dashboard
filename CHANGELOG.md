@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/compare/v1.3.4...v1.3.5) (2023-01-22)
+
+
+### Bug Fixes
+
+* **display:** Updating Home Page Styles For Tablet ([0fad156](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/commit/0fad156c8280ca29ddc4a280a8a0735e1f27d7a0)), closes [#98](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/issues/98)
+
 ## [1.3.4](https://github.com/Rogibb111/Ski-Resort-Dashboard/compare/v1.3.3...v1.3.4) (2023-01-21)
 
 
