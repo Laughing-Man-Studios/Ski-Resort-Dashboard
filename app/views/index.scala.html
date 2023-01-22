@@ -12,8 +12,8 @@
   
     @for(resortSnapshot <- snapshotArray) {
       <div class="resort-card">
+        <img class="secondary" src="@routes.Assets.at("images/"+ resortSnapshot.resort.toString() +".png")" title="@resortSnapshot.resort.toString()"/>
         <h3>@resortSnapshot.resort.toString()</h3>
-        <img class="tertiary" src="@routes.Assets.at("images/"+ resortSnapshot.resort.toString() +".png")" title="@resortSnapshot.resort.toString()"/>
         <div class="primary">
           <p>24 Hour Snowfall: @resortSnapshot.resortData.dailySnow inches</p> 
           <p>Current Snow Depth: @resortSnapshot.resortData.baseDepth inches</p>
