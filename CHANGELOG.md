@@ -1,3 +1,10 @@
+## [1.3.6](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/compare/v1.3.5...v1.3.6) (2023-01-23)
+
+
+### Bug Fixes
+
+* **display:** Updating Home Page Desktop Styles ([7751115](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/commit/775111543bf90fa7628e105f61c001cca8ffda79)), closes [#99](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/issues/99)
+
 ## [1.3.5](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/compare/v1.3.4...v1.3.5) (2023-01-22)
 
 
