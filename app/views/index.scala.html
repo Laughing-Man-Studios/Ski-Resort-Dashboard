@@ -9,21 +9,25 @@
       direction. I sample this data for all of the resorts two times a day, once in the morning and once in the afternoon. You can see all of the 
       data that I have collected so far using the graphs on each resort page. Enjoy!
     </p>
-  
-    @for(resortSnapshot <- snapshotArray) {
-      <div class="resort-card">
-        <img class="secondary" src="@routes.Assets.at("images/"+ resortSnapshot.resort.toString() +".png")" title="@resortSnapshot.resort.toString()"/>
-        <h3>@resortSnapshot.resort.toString()</h3>
-        <div class="primary">
-          <p>24 Hour Snowfall: @resortSnapshot.resortData.dailySnow inches</p> 
-          <p>Current Snow Depth: @resortSnapshot.resortData.baseDepth inches</p>
-          <p>Current Temperature: @resortSnapshot.resortData.temperature farenheit</p>
+    
+    <div id="resort-card-container">
+      @for(resortSnapshot <- snapshotArray) {
+        <div class="resort-card">
+          <img class="secondary" src="@routes.Assets.at("images/"+ resortSnapshot.resort.toString() +".png")" title="@resortSnapshot.resort.toString()"/>
+          <h3>@resortSnapshot.resort.toString()</h3>
+          <div class="data">
+            <div class="primary">
+              <p>24 Hour Snowfall: @resortSnapshot.resortData.dailySnow inches</p> 
+              <p>Current Snow Depth: @resortSnapshot.resortData.baseDepth inches</p>
+              <p>Current Temperature: @resortSnapshot.resortData.temperature farenheit</p>
+            </div>
+            <div class="secondary">
+              <p>Current Wind Speed: @resortSnapshot.resortData.windSpeed mph</p>
+              <p>Current Wind Direction: @resortSnapshot.resortData.windDir.toString()</p>
+            </div>
+          </div>
         </div>
-        <div class="secondary">
-          <p>Current Wind Speed: @resortSnapshot.resortData.windSpeed mph</p>
-          <p>Current Wind Direction: @resortSnapshot.resortData.windDir.toString()</p>
-        </div>
-      </div>
-    }
+      }
+    </div>
   </div>
 }
