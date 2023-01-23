@@ -24,6 +24,17 @@ object ResortSnapshotFactory {
         (JsPath \ "windDir").read[CardinalDirections]
     ) (ResortData.apply _)
 
+    val resortsList: List[Resorts] = List(
+        ArapahoeBasin,
+        Breckenridge,
+        BeaverCreek,
+        Vail,
+        Keystone,
+        Eldora,
+        Copper,
+        WinterPark
+    )
+
     def resortSnapshotFromJson(data: String, resort:Resorts): ResortSnapshot = {
         val jsonData = Json.parse(data)
         val resortData = Json.fromJson[ResortData](jsonData)

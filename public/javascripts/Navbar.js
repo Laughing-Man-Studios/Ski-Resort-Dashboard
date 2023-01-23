@@ -14,12 +14,16 @@ export class Navbar extends LitElement {
   constructor() {
     super();
     // Declare reactive properties
-    this.name = 'World';
+    this.isOpen = false;
   }
 
   // Render the UI as a function of component state
   render() {
-    return html`<p>Hello, ${this.name}!</p>`;
+    return html`
+      <div>
+        <slot name=""></slot>
+      </div>
+    `;
   }
 }
 customElements.define('nav-bar', Navbar);

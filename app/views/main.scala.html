@@ -4,7 +4,7 @@
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  *@
-@(title: String, styles: String)(content: Html)
+@(title: String, styles: String, resortList: List[Resorts])(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,11 @@
 
     </head>
     <body>
-        <nav-bar></nav-bar>
+        <nav-bar>
+            @for(resort <- resortList) {
+                <a src="@resort.toString()">@resort.toString()</a>
+            }
+        </nav-bar>
         @* And here's where we render the `Html` object containing
          * the page content. *@
         @content
