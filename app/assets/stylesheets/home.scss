@@ -5,6 +5,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     padding: 0 0.5rem;
 
+    @include screen(desktop) {
+        padding: 0 2rem;
+    }
+
     #container {
         margin: auto;
         padding: 1rem;
@@ -15,11 +19,31 @@ body {
             text-align: center;
             color: $red;
             font-size: 2rem;
+            margin: 0.5rem;
         }
     
         #description {
             text-align: center;
             font-size: smaller ;
+        }
+
+        @include screen(desktop) {
+            padding: 1rem 2rem;
+            width: calc(100% - 4rem);
+            font-size: 0.7rem;
+
+            #resort-card-container {
+                display: grid;
+                grid-template-columns: auto auto;
+
+                .resort-card {
+                    display: flex;
+                    margin: auto {
+                        bottom: 2rem;
+                    };
+                    padding: 1rem;
+                }
+            }
         }
     
         .resort-card {
@@ -50,9 +74,9 @@ body {
                 }
             }
 
-            @include screen(mobile) {
+            @include screen(tablet) {
                 display: flex;
-                padding: 2rem 2rem;
+                padding: 2rem;
 
                 h3 {
                     display: none;
@@ -70,6 +94,7 @@ body {
                     background-color: $white;
                     border-radius: 1rem;
                     box-shadow: 0.2rem 0.2rem 0.2rem $black;
+                    margin-right: 2rem;
                 }
             }
         }
