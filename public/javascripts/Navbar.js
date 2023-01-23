@@ -26,6 +26,12 @@ export class Navbar extends LitElement {
       justify-content: space-between;
       background-color: #4388cc;
     }
+
+    #nav-container img {
+      height: 1.8rem;
+      background-color: white;
+      margin: 0.5rem;
+    }
   `;
 
   constructor() {
