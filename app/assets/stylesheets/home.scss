@@ -9,6 +9,12 @@ body {
         padding: 0 2rem;
     }
 
+    nav-bar {
+        --white: $white;
+        --blue: $blue;
+        --green: $green;
+    }
+
     #container {
         margin: auto;
         padding: 1rem;
