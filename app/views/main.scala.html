@@ -17,8 +17,15 @@
     </head>
     <body>
         <nav-bar imageSrc="@routes.Assets.at("images/" + navImgSrc + ".png")">
+            <a href="/">
+                <img src="@routes.Assets.at("images/Home.png")" title="Home menuImg"/>
+                <p>Home</p>
+            </a>
             @for(resort <- resortList) {
-                <a src="@resort.toString()">@resort.toString()</a>
+                <a href="/resorts/@resort.toString()">
+                    <img src="@routes.Assets.at("images/"+ resort.toString() +".png")" title="@resort.toString() menuImg"/>
+                    <p>@resort.toString()</p>
+                </a>
             }
         </nav-bar>
         @* And here's where we render the `Html` object containing
