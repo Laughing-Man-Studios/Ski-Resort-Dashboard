@@ -13,3 +13,9 @@ $black: black;
 $green: #749c75;
 $red: #B98B82;
 $gray: rgb(238, 238, 238);
+
+nav-bar {
+    --white: $white;
+    --blue: $blue;
+    --green: $green;
+}
