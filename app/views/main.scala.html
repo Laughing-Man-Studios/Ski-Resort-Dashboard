@@ -17,12 +17,12 @@
     </head>
     <body>
         <nav-bar imageSrc="@routes.Assets.at("images/" + navImgSrc + ".png")">
-            <a href="/">
+            <a href="/" class="@if(navImgSrc == "Home") { selected }">
                 <img src="@routes.Assets.at("images/Home.png")" title="Home menuImg"/>
                 <p>Home</p>
             </a>
             @for(resort <- resortList) {
-                <a href="/resorts/@resort.toString()">
+                <a href="/resorts/@resort.toString()" class="@if(navImgSrc == resort.toString) { selected }">
                     <img src="@routes.Assets.at("images/"+ resort.toString() +".png")" title="@resort.toString() menuImg"/>
                     <p>@resort.toString()</p>
                 </a>
