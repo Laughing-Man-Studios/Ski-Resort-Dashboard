@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/compare/v1.3.6...v1.4.0) (2023-01-24)
+
+
+### Features
+
+* **display:** Adding Navbar Component ([4bfc2e0](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/commit/4bfc2e040d6ba4c8706edbddb7cb872182875c2a)), closes [#100](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/issues/100)
+
 ## [1.3.6](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/compare/v1.3.5...v1.3.6) (2023-01-23)
 
 
