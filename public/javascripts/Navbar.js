@@ -14,7 +14,7 @@ export class Navbar extends LitElement {
     #menu-button div {
       width: 1.5rem;
       height: 0.2rem;
-      background-color: white;
+      background-color: var(--white, white);
       margin: 0.3rem 0;
     }
     .hidden {
@@ -24,13 +24,21 @@ export class Navbar extends LitElement {
     #nav-container {
       display: flex;
       justify-content: space-between;
-      background-color: #4388cc;
+      background-color: var(--blue, blue);
     }
 
     #nav-container img {
       height: 1.8rem;
-      background-color: white;
+      background-color: var(--white, white);
       margin: 0.5rem;
+    }
+
+    ::slotted(a) {
+      display: flex;
+      align-items: center;  
+      background-color: var(--blue, blue);
+      color: white;
+      border-top: solid 0.1rem var(--green, green);
     }
   `;
 
@@ -46,16 +54,41 @@ export class Navbar extends LitElement {
     return html`
       <div id="nav-container">
         <img src=${this.imageSrc} title="pageIcon"/>
-        <div id="menu-button" >
+        <div id="menu-button" @click=${this._toggleMenu}>
           <div></div>
           <div></div>
           <div></div>
         </div>
       </div>
       <div id="links-container" class=${classMap(this._linksContainerClasses)}>
-          <slot name=""></slot>
+          <slot @slotchange=${this._handleSlotChange}></slot>
         </div>
     `;
+  }
+
+  _toggleMenu() {
+    this._linksContainerClasses = {
+      ...this._linksContainerClasses,
+      hidden: !this._linksContainerClasses.hidden
+    }
+  }
+
+  _handleSlotChange(e) {
+    const childNodes = e.target.assignedNodes();
+    childNodes.forEach(element => {
+      if (element.querySelector) {
+        const img = element.querySelector('img');
+        if (img) {
+          img.style.height = '1.8rem';
+          img.style.backgroundColor = css`var(--white, white)`;
+          img.style.margin = '0.5rem';
+        }
+        const p = element.querySelector('p');
+        if (p) {
+          p.style.margin = '0.5rem auto';
+        }
+      }
+    });
   }
 }
 customElements.define('nav-bar', Navbar);
