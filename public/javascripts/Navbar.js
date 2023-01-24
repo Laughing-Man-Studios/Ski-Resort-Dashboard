@@ -40,6 +40,31 @@ export class Navbar extends LitElement {
       color: white;
       border-top: solid 0.1rem var(--green, green);
     }
+
+    @media only screen and (min-width: 769px) {
+        .hidden {
+          display: block;
+        }
+
+        #nav-container {
+          display: none;
+        }
+
+        #links-container {
+          padding-top: 1rem;
+        }
+
+        ::slotted(a) {
+          padding: 0.25rem 1rem;
+          text-align: center;
+          border-top: initial;
+          border-right: solid 0.15rem var(--green, green)
+        }
+
+        ::slotted(.selected) {
+          border: solid 0.15rem var(--green, green);
+        }
+    }
   `;
 
   constructor() {
