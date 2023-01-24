@@ -4,7 +4,7 @@
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  *@
-@(title: String, styles: String)(content: Html)
+@(title: String, styles: String, resortList: List[Resorts], navImgSrc: String)(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,18 @@
         <meta name="viewport" content="width=device-width" />
     </head>
     <body>
-        <nav-bar></nav-bar>
+        <nav-bar imageSrc="@routes.Assets.at("images/" + navImgSrc + ".png")">
+            <a href="/" class="@if(navImgSrc == "Home") { selected }">
+                <img src="@routes.Assets.at("images/Home.png")" title="Home menuImg"/>
+                <p>Home</p>
+            </a>
+            @for(resort <- resortList) {
+                <a href="/resorts/@resort.toString()" class="@if(navImgSrc == resort.toString) { selected }">
+                    <img src="@routes.Assets.at("images/"+ resort.toString() +".png")" title="@resort.toString() menuImg"/>
+                    <p>@resort.toString()</p>
+                </a>
+            }
+        </nav-bar>
         @* And here's where we render the `Html` object containing
          * the page content. *@
         @content

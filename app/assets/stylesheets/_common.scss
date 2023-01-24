@@ -13,3 +13,21 @@ $black: black;
 $green: #749c75;
 $red: #B98B82;
 $gray: rgb(238, 238, 238);
+
+nav-bar {
+    --white: $white;
+    --blue: $blue;
+    --green: $green;
+
+    p {
+        display: none;
+    }
+}
+
+@include screen(desktop) {
+    nav-bar:hover {
+        p {
+            display: block;
+        }
+    }
+}

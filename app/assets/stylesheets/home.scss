@@ -7,6 +7,7 @@ body {
 
     @include screen(desktop) {
         padding: 0 2rem;
+        display: flex;
     }
 
     #container {
