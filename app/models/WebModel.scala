@@ -17,29 +17,24 @@ object ResortSnapshotFactory {
         case default => throw new Error("Tried to read string that wasn't a Cardinal Direction: "+ default.as[String])
     }
     implicit val resortDataRead: Reads[ResortData] = (
-        (JsPath \ "dailySnow").read[Int] and
-        (JsPath \ "baseDepth").read[Int] and
-        (JsPath \ "temperature").read[Int] and
-        (JsPath \ "windSpeed").read[Int] and
-        (JsPath \ "windDir").read[CardinalDirections]
+        (JsPath \ DailySnow.toString()).read[Int] and
+        (JsPath \ BaseDepth.toString()).read[Int] and
+        (JsPath \ Temperature.toString()).read[Int] and
+        (JsPath \ WindSpeed.toString()).read[Int] and
+        (JsPath \ WindDir.toString()).read[CardinalDirections]
     ) (ResortData.apply _)
 
-    val resortsList: List[Resorts] = List(
-        ArapahoeBasin,
-        Breckenridge,
-        BeaverCreek,
-        Vail,
-        Keystone,
-        Eldora,
-        Copper,
-        WinterPark
-    )
 
     def resortSnapshotFromJson(data: String, resort:Resorts): ResortSnapshot = {
         val jsonData = Json.parse(data)
         val resortData = Json.fromJson[ResortData](jsonData)
         new ResortSnapshot(resort, resortData.get)
     }
+
+
+
+
+
 
     def resortDataSnapshotFromJson(data: String, timestamp: String): ResortDataSnapshot = {
             val dataOption = Option(data)
@@ -87,6 +82,7 @@ object ResortsFactory {
         }
     }
 }
+
 sealed trait Resorts { val databaseName: String; val scrapeUrl: String }
 sealed trait PowdrResorts extends Resorts { val location_id: Int }
 case object ArapahoeBasin extends Resorts {
@@ -136,3 +132,14 @@ case object WinterPark extends Resorts {
     override val databaseName: String = "WINTERPARK"
     override val scrapeUrl: String = "https://mtnpowder.com/feed?resortId=5"
 }
+
+val ResortsList: List[Resorts] = List(
+    ArapahoeBasin,
+    Breckenridge,
+    BeaverCreek,
+    Vail,
+    Keystone,
+    Eldora,
+    Copper,
+    WinterPark
+)

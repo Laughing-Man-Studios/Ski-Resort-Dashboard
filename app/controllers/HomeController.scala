@@ -33,27 +33,23 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, v
   def index() = Action.async { implicit request: Request[AnyContent] =>
     resortData.getLatestSnapshotForAllResorts.map(
       rvArray => rvArray.map(f => ResortSnapshotFactory.resortSnapshotFromJson(f._1.asInstanceOf[String], ResortsFactory.fromDBString(f._2)))//ResortSnapshotFactory.fromJson(f(0).asInstanceOf[String], ta).asInstanceOf[ResortSnapshot]
-    ).map(snapshotArray => Ok(views.html.index(snapshotArray, ResortSnapshotFactory.resortsList)))
+    ).map(snapshotArray => Ok(views.html.index(csnapshotArray, ResortsList)))
   }
 
   def resort(resort: Resorts) = Action.async { implicit request: Request[AnyContent] => 
     resortData.getAllSnapshotsForSingleResort(resort).map(
       dataArray => dataArray.map(v => ResortSnapshotFactory.resortDataSnapshotFromJson(v._1, v._2.toString()))
-    ).map(dataArray => Ok(views.html.resort(dataArray, resort, ResortSnapshotFactory.resortsList)))
+    ).map(dataArray => Ok(views.html.resort(generateGraphData(dataArray), resort, ResortsList)))
   }
 
   def scrape() = Action.async { implicit request: Request[AnyContent] => 
     var resortDataMap: Map[Resorts, DatabaseSnapshot] = Map[Resorts, DatabaseSnapshot]()
     var resortFutureSeq: ArrayBuffer[Future[Unit]] = ArrayBuffer.empty
 
-    resortFutureSeq.addOne(generateFuture(resortDataMap, ArapahoeBasin))
-    resortFutureSeq.addOne(generateFuture(resortDataMap, Breckenridge))
-    resortFutureSeq.addOne(generateFuture(resortDataMap, BeaverCreek))
-    resortFutureSeq.addOne(generateFuture(resortDataMap, Vail))
-    resortFutureSeq.addOne(generateFuture(resortDataMap, Keystone))
-    resortFutureSeq.addOne(generateFuture(resortDataMap, Eldora))
-    resortFutureSeq.addOne(generateFuture(resortDataMap, Copper))
-    resortFutureSeq.addOne(generateFuture(resortDataMap, WinterPark))
+    for 
+      resort <- ResortsList
+    do 
+      resortFutureSeq.addOne(generateFuture(resortDataMap, resort))
     
     Future.sequence(resortFutureSeq).map(futureArray => {
       resortData.setSnapshotForResort(resortDataMap.toMap)
@@ -69,4 +65,6 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, v
       } catch { case e: Exception => println(e.printStackTrace()) }
     }
   }
+
+  private def generateGraphData()
 }
