@@ -3,6 +3,7 @@ package models
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import models.North
+import scala.collection.mutable.ArrayBuffer
 
 object ResortSnapshotFactory {
     implicit val cardinalDirectionsRead: Reads[CardinalDirections] = Reads {
@@ -24,17 +25,22 @@ object ResortSnapshotFactory {
         (JsPath \ WindDir.toString()).read[CardinalDirections]
     ) (ResortData.apply _)
 
+    val resortsList: List[Resorts] = List(
+        ArapahoeBasin,
+        Breckenridge,
+        BeaverCreek,
+        Vail,
+        Keystone,
+        Eldora,
+        Copper,
+        WinterPark
+    )
 
     def resortSnapshotFromJson(data: String, resort:Resorts): ResortSnapshot = {
         val jsonData = Json.parse(data)
         val resortData = Json.fromJson[ResortData](jsonData)
         new ResortSnapshot(resort, resortData.get)
     }
-
-
-
-
-
 
     def resortDataSnapshotFromJson(data: String, timestamp: String): ResortDataSnapshot = {
             val dataOption = Option(data)
@@ -53,6 +59,7 @@ object ResortSnapshotFactory {
 final case class ResortData(dailySnow: Int, baseDepth: Int, temperature: Int, windSpeed: Int, windDir: CardinalDirections) 
 final case class ResortSnapshot(resort: Resorts, resortData: ResortData)
 final case class ResortDataSnapshot(timestamp: String, resortData: ResortData)
+final case class DataPlot(timestamp: String, value: String | Int)
 
 object ResortsFactory {
     def fromDBString(resort: String): Resorts = {
@@ -133,13 +140,19 @@ case object WinterPark extends Resorts {
     override val scrapeUrl: String = "https://mtnpowder.com/feed?resortId=5"
 }
 
-val ResortsList: List[Resorts] = List(
-    ArapahoeBasin,
-    Breckenridge,
-    BeaverCreek,
-    Vail,
-    Keystone,
-    Eldora,
-    Copper,
-    WinterPark
-)
+
+class GraphData () {
+	val dailySnow = ArrayBuffer[DataPlot]()
+	val baseDepth = ArrayBuffer[DataPlot]()
+	val temperature = ArrayBuffer[DataPlot]()
+	val windSpeed = ArrayBuffer[DataPlot]()
+	val windDir = ArrayBuffer[DataPlot]()
+
+	def addPlotsFromSnapshot(snapshot: ResortDataSnapshot): Unit = {
+        dailySnow += new DataPlot(snapshot.timestamp, snapshot.resortData.dailySnow)
+        baseDepth += new DataPlot(snapshot.timestamp, snapshot.resortData.baseDepth)
+        temperature += new DataPlot(snapshot.timestamp, snapshot.resortData.temperature)
+        windSpeed += new DataPlot(snapshot.timestamp, snapshot.resortData.windSpeed)
+        windDir += new DataPlot(snapshot.timestamp, snapshot.resortData.windDir)
+    }
+}

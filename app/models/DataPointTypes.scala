@@ -1,3 +1,5 @@
+package models
+
 sealed trait DataPointTypes
 case object DailySnow extends DataPointTypes {
     override def toString: String = "dailySnow"

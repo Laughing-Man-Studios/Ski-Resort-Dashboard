@@ -33,24 +33,23 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, v
   def index() = Action.async { implicit request: Request[AnyContent] =>
     resortData.getLatestSnapshotForAllResorts.map(
       rvArray => rvArray.map(f => ResortSnapshotFactory.resortSnapshotFromJson(f._1.asInstanceOf[String], ResortsFactory.fromDBString(f._2)))//ResortSnapshotFactory.fromJson(f(0).asInstanceOf[String], ta).asInstanceOf[ResortSnapshot]
-    ).map(snapshotArray => Ok(views.html.index(csnapshotArray, ResortsList)))
+    ).map(snapshotArray => Ok(views.html.index(snapshotArray, ResortSnapshotFactory.resortsList)))
   }
 
   def resort(resort: Resorts) = Action.async { implicit request: Request[AnyContent] => 
     resortData.getAllSnapshotsForSingleResort(resort).map(
       dataArray => dataArray.map(v => ResortSnapshotFactory.resortDataSnapshotFromJson(v._1, v._2.toString()))
-    ).map(dataArray => Ok(views.html.resort(generateGraphData(dataArray), resort, ResortsList)))
+    ).map(dataArray => Ok(views.html.resort(generateGraphData(dataArray), resort, ResortSnapshotFactory.resortsList)))
   }
 
   def scrape() = Action.async { implicit request: Request[AnyContent] => 
     var resortDataMap: Map[Resorts, DatabaseSnapshot] = Map[Resorts, DatabaseSnapshot]()
     var resortFutureSeq: ArrayBuffer[Future[Unit]] = ArrayBuffer.empty
 
-    for 
-      resort <- ResortsList
-    do 
+    for (resort <- ResortSnapshotFactory.resortsList) {
       resortFutureSeq.addOne(generateFuture(resortDataMap, resort))
-    
+    } 
+
     Future.sequence(resortFutureSeq).map(futureArray => {
       resortData.setSnapshotForResort(resortDataMap.toMap)
       Ok
@@ -66,5 +65,13 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, v
     }
   }
 
-  private def generateGraphData()
+  private def generateGraphData(dataArray: Array[ResortDataSnapshot]): GraphData = {
+    val graphData = new GraphData()
+    
+    for 
+      snapshot <- dataArray 
+    yield 
+      graphData.addPlotsFromSnapshot(snapshot)
+      graphData
+  }
 }
