@@ -32,7 +32,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, v
    */
   def index() = Action.async { implicit request: Request[AnyContent] =>
     resortData.getLatestSnapshotForAllResorts.map(
-      rvArray => rvArray.map(f => ResortSnapshotFactory.resortSnapshotFromJson(f._1.asInstanceOf[String], ResortsFactory.fromDBString(f._2)))//ResortSnapshotFactory.fromJson(f(0).asInstanceOf[String], ta).asInstanceOf[ResortSnapshot]
+      rvArray => rvArray.map(f => ResortSnapshotFactory.resortSnapshotFromJson(f._1.asInstanceOf[String], ResortsFactory.fromDBString(f._2)))
     ).map(snapshotArray => Ok(views.html.index(snapshotArray, ResortSnapshotFactory.resortsList)))
   }
 
@@ -68,10 +68,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, v
   private def generateGraphData(dataArray: Array[ResortDataSnapshot]): GraphData = {
     val graphData = new GraphData()
     
-    for 
-      snapshot <- dataArray 
-    yield 
+    for (snapshot <- dataArray) {
       graphData.addPlotsFromSnapshot(snapshot)
-      graphData
+    }
+      
+    graphData
   }
 }
