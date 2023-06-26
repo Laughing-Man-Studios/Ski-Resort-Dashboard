@@ -59,7 +59,7 @@ object ResortSnapshotFactory {
 final case class ResortData(dailySnow: Int, baseDepth: Int, temperature: Int, windSpeed: Int, windDir: CardinalDirections) 
 final case class ResortSnapshot(resort: Resorts, resortData: ResortData)
 final case class ResortDataSnapshot(timestamp: String, resortData: ResortData)
-final case class DataPlot(timestamp: String, value: String | Int)
+final case class DataPlot(y: Any, x: Any)
 
 object ResortsFactory {
     def fromDBString(resort: String): Resorts = {
