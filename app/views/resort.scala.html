@@ -3,16 +3,13 @@
 @main("Ski Resort Dashboard", "stylesheet/resort.css", resortList, resort.toString()) {
     <h1>@resort.toString()</h1>
 
-    <ul>
-        @for(snapshot <- snapshotArray) {
-            <li>Time: @snapshot.timestamp
-                24 Hour Snowfall: @snapshot.resortData.dailySnow inches 
-                Current Snow Depth: @snapshot.resortData.baseDepth inches
-                Current Temperature: @snapshot.resortData.temperature farenheit
-                Current Wind Speed: @snapshot.resortData.windSpeed mph
-                Current Wind Direction: @snapshot.resortData.windDir.toString()
-            </li>
-        }
-    </ul>
+    <h2>Daily Snow</h2>
+    <div>
+        [
+            @for(plot <- graphData.dailySnow) {
+                { x: @plot.x, y: @plot.y}
+            }
+        ]
+    </div>
 
 }
