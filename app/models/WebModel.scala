@@ -59,7 +59,20 @@ object ResortSnapshotFactory {
 final case class ResortData(dailySnow: Int, baseDepth: Int, temperature: Int, windSpeed: Int, windDir: CardinalDirections) 
 final case class ResortSnapshot(resort: Resorts, resortData: ResortData)
 final case class ResortDataSnapshot(timestamp: String, resortData: ResortData)
-final case class DataPlot(y: Any, x: Any)
+final case class DataPlot(timestamp: String, value: Either[String, Int]) {
+  implicit val valWrites = new Writes[Either[CardinalDirections, Int]] {
+    def writes(o: Either[String,Int]): JsValue = o.fold(
+      l => JsString(l.toString()),
+      r => JsNumber(r)
+    )
+  } 
+  implicit val writes = Json.writes[DataPlot]
+
+  def toJson(): String = {
+  	return Json.toJson(this).toString()
+  }
+    
+}
 
 object ResortsFactory {
     def fromDBString(resort: String): Resorts = {
@@ -149,10 +162,10 @@ class GraphData () {
 	val windDir = ArrayBuffer[DataPlot]()
 
 	def addPlotsFromSnapshot(snapshot: ResortDataSnapshot): Unit = {
-        dailySnow += new DataPlot(snapshot.timestamp, snapshot.resortData.dailySnow)
-        baseDepth += new DataPlot(snapshot.timestamp, snapshot.resortData.baseDepth)
-        temperature += new DataPlot(snapshot.timestamp, snapshot.resortData.temperature)
-        windSpeed += new DataPlot(snapshot.timestamp, snapshot.resortData.windSpeed)
-        windDir += new DataPlot(snapshot.timestamp, snapshot.resortData.windDir)
+        dailySnow += new DataPlot(snapshot.timestamp, Right(snapshot.resortData.dailySnow))
+        baseDepth += new DataPlot(snapshot.timestamp, Right(snapshot.resortData.baseDepth))
+        temperature += new DataPlot(snapshot.timestamp, Right(snapshot.resortData.temperature))
+        windSpeed += new DataPlot(snapshot.timestamp, Right(snapshot.resortData.windSpeed))
+        windDir += new DataPlot(snapshot.timestamp, Left(snapshot.resortData.windDir))
     }
 }
