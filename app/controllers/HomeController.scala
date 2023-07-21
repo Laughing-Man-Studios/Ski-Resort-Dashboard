@@ -39,7 +39,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, v
   def resort(resort: Resorts) = Action.async { implicit request: Request[AnyContent] => 
     resortData.getAllSnapshotsForSingleResort(resort).map(
       dataArray => dataArray.map(v => ResortSnapshotFactory.resortDataSnapshotFromJson(v._1, v._2.toString()))
-    ).map(dataArray => Ok(views.html.resort(generateGraphData(dataArray), resort, ResortSnapshotFactory.resortsList)))
+    ).map(dataArray => Ok(views.html.resort(new GraphData(dataArray), resort, ResortSnapshotFactory.resortsList)))
   }
 
   def scrape() = Action.async { implicit request: Request[AnyContent] => 
@@ -63,15 +63,5 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, v
         resortDataMap.put(resort, scraper.scrapeResort())
       } catch { case e: Exception => println(e.printStackTrace()) }
     }
-  }
-
-  private def generateGraphData(dataArray: Array[ResortDataSnapshot]): GraphData = {
-    val graphData = new GraphData()
-    
-    for (snapshot <- dataArray) {
-      graphData.addPlotsFromSnapshot(snapshot)
-    }
-      
-    graphData
   }
 }
