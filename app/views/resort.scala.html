@@ -5,11 +5,7 @@
 
     <h2>Daily Snow</h2>
     <div>
-        [
-            @for(plot <- graphData.dailySnow) {
-                { x: @plot.x, y: @plot.y}
-            }
-        ]
+        @graphData.dailySnow
     </div>
 
 }
