@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/compare/v1.4.0...v1.5.0) (2023-07-22)
+
+
+### Features
+
+* **display:** Update individual resort data format ([398922a](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/commit/398922ab1374f6e492001607ff1d2690db9e32c1)), closes [#107](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/issues/107)
+
 # [1.4.0](https://github.com/Laughing-Man-Studios/Ski-Resort-Dashboard/compare/v1.3.6...v1.4.0) (2023-01-24)
 
 
