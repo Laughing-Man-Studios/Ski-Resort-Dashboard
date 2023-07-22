@@ -3,6 +3,7 @@ package models
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import models.North
+import scala.collection.mutable.ArrayBuffer
 
 object ResortSnapshotFactory {
     implicit val cardinalDirectionsRead: Reads[CardinalDirections] = Reads {
@@ -17,11 +18,11 @@ object ResortSnapshotFactory {
         case default => throw new Error("Tried to read string that wasn't a Cardinal Direction: "+ default.as[String])
     }
     implicit val resortDataRead: Reads[ResortData] = (
-        (JsPath \ "dailySnow").read[Int] and
-        (JsPath \ "baseDepth").read[Int] and
-        (JsPath \ "temperature").read[Int] and
-        (JsPath \ "windSpeed").read[Int] and
-        (JsPath \ "windDir").read[CardinalDirections]
+        (JsPath \ DailySnow.toString()).read[Int] and
+        (JsPath \ BaseDepth.toString()).read[Int] and
+        (JsPath \ Temperature.toString()).read[Int] and
+        (JsPath \ WindSpeed.toString()).read[Int] and
+        (JsPath \ WindDir.toString()).read[CardinalDirections]
     ) (ResortData.apply _)
 
     val resortsList: List[Resorts] = List(
@@ -58,6 +59,20 @@ object ResortSnapshotFactory {
 final case class ResortData(dailySnow: Int, baseDepth: Int, temperature: Int, windSpeed: Int, windDir: CardinalDirections) 
 final case class ResortSnapshot(resort: Resorts, resortData: ResortData)
 final case class ResortDataSnapshot(timestamp: String, resortData: ResortData)
+final case class DataPlot(x: String, y: Either[CardinalDirections, Int]) {
+  implicit val valWrites = new Writes[Either[CardinalDirections, Int]] {
+    def writes(o: Either[CardinalDirections, Int]): JsValue = o.fold(
+      l => JsString(l.toString()),
+      r => JsNumber(r)
+    )
+  } 
+  implicit val writes = Json.writes[DataPlot]
+
+  def toJson(): String = {
+  	return Json.toJson(this).toString()
+  }
+    
+}
 
 object ResortsFactory {
     def fromDBString(resort: String): Resorts = {
@@ -87,6 +102,7 @@ object ResortsFactory {
         }
     }
 }
+
 sealed trait Resorts { val databaseName: String; val scrapeUrl: String }
 sealed trait PowdrResorts extends Resorts { val location_id: Int }
 case object ArapahoeBasin extends Resorts {
@@ -135,4 +151,27 @@ case object WinterPark extends Resorts {
     override def toString: String = "Winter-Park"
     override val databaseName: String = "WINTERPARK"
     override val scrapeUrl: String = "https://mtnpowder.com/feed?resortId=5"
+}
+
+
+class GraphData (dataArray: Array[ResortDataSnapshot]) {
+	private val _dailySnow = ArrayBuffer[DataPlot]()
+	private val _baseDepth = ArrayBuffer[DataPlot]()
+	private val _temperature = ArrayBuffer[DataPlot]()
+	private val _windSpeed = ArrayBuffer[DataPlot]()
+	private val _windDir = ArrayBuffer[DataPlot]()
+
+	for (snapshot <- dataArray) {
+        _dailySnow += new DataPlot(snapshot.timestamp, Right(snapshot.resortData.dailySnow))
+        _baseDepth += new DataPlot(snapshot.timestamp, Right(snapshot.resortData.baseDepth))
+        _temperature += new DataPlot(snapshot.timestamp, Right(snapshot.resortData.temperature))
+        _windSpeed += new DataPlot(snapshot.timestamp, Right(snapshot.resortData.windSpeed))
+        _windDir += new DataPlot(snapshot.timestamp, Left(snapshot.resortData.windDir))
+    }
+
+    val dailySnow = Json.toJson(_dailySnow.map(e => e.toJson()))
+	val baseDepth = Json.toJson(_baseDepth.map(e => e.toJson()))
+	val temperature = Json.toJson(_temperature.map(e => e.toJson()))
+	val windSpeed = Json.toJson(_windSpeed.map(e => e.toJson()))
+	val windDir = Json.toJson(_windDir.map(e => e.toJson()))
 }

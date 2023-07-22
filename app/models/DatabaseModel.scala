@@ -1,9 +1,6 @@
 package models
 
-import play.api.libs.json.Json
-import play.api.libs.json.Writes
-import play.api.libs.json.JsValue
-import play.api.libs.json.JsString
+import play.api.libs.json._
 
 final case class DatabaseSnapshot(dailySnow: Int, baseDepth: Int, temperature: Int, windSpeed: Int, windDir: CardinalDirections) {
     implicit val dirWrites = new Writes[CardinalDirections] {
