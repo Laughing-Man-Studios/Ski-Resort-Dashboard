@@ -1,6 +1,6 @@
-@(graphData: GraphData, resort: Resorts, resortList: List[Resorts])
+@(graphData: GraphData, resort: Resorts, resortList: List[Resorts], cdnURL: String)
 
-@main("Ski Resort Dashboard", "stylesheet/resort.css", resortList, resort.toString()) {
+@main("Ski Resort Dashboard - " + resort.toString(), "stylesheet/resort.css", resortList, resort.toString(), cdnURL: String) {
     <h1>@resort.toString()</h1>
 
     <h2>Daily Snow</h2>

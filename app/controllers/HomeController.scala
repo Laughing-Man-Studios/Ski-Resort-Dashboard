@@ -14,6 +14,7 @@ import scrapers.ScraperFactory
 import play.api.libs.ws.WSClient
 import scrapers.PowdrScraper
 import scrapers.WinterParkScraper
+import play.api.Configuration
 
 
 /**
@@ -21,8 +22,9 @@ import scrapers.WinterParkScraper
  * application's home page.
  */
 @Singleton
-class HomeController @Inject()(val controllerComponents: ControllerComponents, val resortData: ResortData, val ws: WSClient) extends BaseController {
+class HomeController @Inject()(val controllerComponents: ControllerComponents, val resortData: ResortData, val ws: WSClient, config: Configuration) extends BaseController {
 
+  val cdnURL = config.get[String]("config.cdn.url")
   /**
    * Create an Action to render an HTML page.
    *
@@ -39,7 +41,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, v
   def resort(resort: Resorts) = Action.async { implicit request: Request[AnyContent] => 
     resortData.getAllSnapshotsForSingleResort(resort).map(
       dataArray => dataArray.map(v => ResortSnapshotFactory.resortDataSnapshotFromJson(v._1, v._2.toString()))
-    ).map(dataArray => Ok(views.html.resort(new GraphData(dataArray), resort, ResortSnapshotFactory.resortsList)))
+    ).map(dataArray => Ok(views.html.resort(new GraphData(dataArray), resort, ResortSnapshotFactory.resortsList, cdnURL)))
   }
 
   def scrape() = Action.async { implicit request: Request[AnyContent] => 
