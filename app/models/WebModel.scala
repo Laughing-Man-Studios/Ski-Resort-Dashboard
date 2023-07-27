@@ -59,20 +59,7 @@ object ResortSnapshotFactory {
 final case class ResortData(dailySnow: Int, baseDepth: Int, temperature: Int, windSpeed: Int, windDir: CardinalDirections) 
 final case class ResortSnapshot(resort: Resorts, resortData: ResortData)
 final case class ResortDataSnapshot(timestamp: String, resortData: ResortData)
-final case class DataPlot(x: String, y: Either[CardinalDirections, Int]) {
-  implicit val valWrites = new Writes[Either[CardinalDirections, Int]] {
-    def writes(o: Either[CardinalDirections, Int]): JsValue = o.fold(
-      l => JsString(l.toString()),
-      r => JsNumber(r)
-    )
-  } 
-  implicit val writes = Json.writes[DataPlot]
 
-  def toJson(): String = {
-  	return Json.toJson(this).toString()
-  }
-    
-}
 
 object ResortsFactory {
     def fromDBString(resort: String): Resorts = {
@@ -155,6 +142,16 @@ case object WinterPark extends Resorts {
 
 
 class GraphData (dataArray: Array[ResortDataSnapshot]) {
+    implicit val valWrites = new Writes[Either[CardinalDirections, Int]] {
+        def writes(o: Either[CardinalDirections, Int]): JsValue = o.fold(
+        l => JsString(l.toString()),
+        r => JsNumber(r)
+        )
+    } 
+    implicit val writes = Json.writes[DataPlot]
+
+    final case class DataPlot(x: String, y: Either[CardinalDirections, Int])
+
 	private val _dailySnow = ArrayBuffer[DataPlot]()
 	private val _baseDepth = ArrayBuffer[DataPlot]()
 	private val _temperature = ArrayBuffer[DataPlot]()
@@ -169,9 +166,9 @@ class GraphData (dataArray: Array[ResortDataSnapshot]) {
         _windDir += new DataPlot(snapshot.timestamp, Left(snapshot.resortData.windDir))
     }
 
-    val dailySnow = Json.toJson(_dailySnow.map(e => e.toJson()))
-	val baseDepth = Json.toJson(_baseDepth.map(e => e.toJson()))
-	val temperature = Json.toJson(_temperature.map(e => e.toJson()))
-	val windSpeed = Json.toJson(_windSpeed.map(e => e.toJson()))
-	val windDir = Json.toJson(_windDir.map(e => e.toJson()))
+    val dailySnow = Json.toJson(_dailySnow)
+	val baseDepth = Json.toJson(_baseDepth)
+	val temperature = Json.toJson(_temperature)
+	val windSpeed = Json.toJson(_windSpeed)
+	val windDir = Json.toJson(_windDir)
 }
