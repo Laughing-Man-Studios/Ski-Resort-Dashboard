@@ -4,7 +4,7 @@
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  *@
-@(title: String, styles: String, resortList: List[Resorts], navImgSrc: String)(content: Html)
+@(title: String, styles: String, resortList: List[Resorts], navImgSrc: String, cdnURL: String)(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,5 +33,8 @@
         @content
 
       <script src="@routes.Assets.at("javascripts/Navbar.js")" type="module"></script>
+      @if(cdnURL.length != 0) {
+        <script src="@cdnURL/lit-graph.min.js" type="module"></script>
+      }
     </body>
 </html>

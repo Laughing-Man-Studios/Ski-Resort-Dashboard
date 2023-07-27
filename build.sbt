@@ -24,3 +24,6 @@ play.sbt.routes.RoutesKeys.routesImport += "util.Binders._"
 // Remove Documenation From Production Build
 Compile / doc / sources := Seq.empty
 Compile / packageDoc / publishArtifact := false
+
+// Dev config
+PlayKeys.devSettings += "config.cdn.url" -> "http://localhost:3000"
